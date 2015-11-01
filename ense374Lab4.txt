@@ -1,16 +1,41 @@
 Outline
 Description
-1. Introduction
-    1.1 Purpose of the system
-    1.2 Design goals
-    1.3 Definitions, acronyms, and abbreviations
+
+1 Introduction
+1.1 Purpose
+The purpose is to create a virtual environment in which these animals live. No external forces such
+as weather will affect our system.
+1.2 Design Goals
+The rules laid out shall be:
+• World is 150 kms square. Carve up the world into a grid of 150/150 (2D environment)
+• Animals without wings can travel three kms in a day. (3 grid locations)
+• Animals with wings can travel 5kms.
+• Insects can travel 1km.
+• Everything must eat within two days.
+• No reproducing of any kind. Everything will die.
+• Print out only what is living at each location.
+
+  1.3 Definitions, acronyms, and abbreviations
     1.4 References
     1.5 Overview
 The purpose of the Introduction is to provide a brief overview of the software architecture and the design goals. It also provides references to other documents and traceability information (e.g., related requirements analysis document, references to existing systems, constraints impacting the software architecture).
- 
-2. Current software architecture
+
+
+2 Current software architecture
+New design
+
 The second section describes the architecture of the system being replaced. If there is no previous system, this section can be replaced by a survey of current architectures for similar systems. The purpose of this section is to make explicit the background information that system architects used, their assumptions, and common issues the new system will address.
  
+
+3 Proposed software architecture
+3.1 Overview
+The programming language is Java and the application will run on a personal computer.
+3.2 Subsystem decomposition
+UML Diagram. Specifically a class diagram.
+3.3 Boundary conditions
+When world is created the user shall be allowed to populate the world. If a user inputs far too
+many items an error shall be received.
+
 3. Proposed software architecture
 The third section documents the system design model of the new system.
  
@@ -38,3 +63,6 @@ Boundary conditions describes the start-up, shutdown, and error behavior of the 
 4. Subsystem services
 Glossary
 The fourth section, Subsystem services, describes the services provided by each subsystem in terms of operations. Although this section is usually empty or incomplete in the first versions of the SDD, this section serves as a reference for teams for the boundaries between their subsystems. The interface of each subsystem is derived from this section and detailed in the Object Design Document.
+
+
+
