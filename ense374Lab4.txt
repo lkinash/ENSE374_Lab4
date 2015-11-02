@@ -1,31 +1,47 @@
+Lindsey Kinash
+200305103
+ENSE 374
+Lab 4
+
 Outline
 Description
 
 1 Introduction
+
 1.1 Purpose
-The purpose is to create a virtual environment in which these animals live. No external forces such
-as weather will affect our system.
+The purpose is to create a virtual environment in which these animals live. No external forces such as weather will affect our system. This means that at the end the animals will likely all die off and the only thing left may be some trees or grass. The virtual environment will be interactive in that the user will be asked to enter the number of each animal they wish the environment to start with. 
+
 1.2 Design Goals
 The rules laid out shall be:
-• World is 150 kms square. Carve up the world into a grid of 150/150 (2D environment)
-• Animals without wings can travel three kms in a day. (3 grid locations)
-• Animals with wings can travel 5kms.
-• Insects can travel 1km.
-• Everything must eat within two days.
-• No reproducing of any kind. Everything will die.
-• Print out only what is living at each location.
+World is 150 kms square. Carve up the world into a grid of 150/150 (2D environment)
+Animals without wings can travel three kms in a day. (3 grid locations)
+Animals with wings can travel 5kms.
+Insects can travel 1km.
+Animals will either travel zero or somewhere up to the maximum number of grid locations each day
+Animals will not travel diagonally for simplicity
+Animals will move their entire days worth of grid locations all in one direction
+The number of tiles moved and direction the animal will be moving will be determined by a random number generator that will tell the animal what to do
+The animals will each have a probability of being eaten if some other animal is on the same grid location as they are, this probability will determine if the other animals on the square will eat them or not
+Animals will only eat or be eaten in the grid square on which they end the day, not while moving
+Plants can not run away or defend themselves thus if an animal that eats a plant ends the day on a grid location with a plant on it they get to eat that day
+Everything must eat within two days, a counter of lives for each animal will tell how many days they have left until they die
+If the animal dies or is eaten they will be eliminated from the simulation
+No reproducing of any kind. Everything will die.
+Print out only what is living at each location at the end of the day including number of each animal that is present
+Plants do not eat anything in the ecosystem so they will not need to eat to live but they may be eaten
 
-  1.3 Definitions, acronyms, and abbreviations
-    1.4 References
-    1.5 Overview
-The purpose of the Introduction is to provide a brief overview of the software architecture and the design goals. It also provides references to other documents and traceability information (e.g., related requirements analysis document, references to existing systems, constraints impacting the software architecture).
+1.3 Definitions, acronyms, and abbreviations
+The animals well be split up in to three different categories: plants, predators and super predators. The plants are the only animal that can be eaten but can not eat, plants do not ever die because they need to eat. The predators eat either plants or other animals and can also be eaten by other animals, they are in the middle of the food chain. The super predators are the ones that do not have any animals in the food chain that eat them, they eat other animals and die if they can not find food to eat.
+
+1.4 References
+This project is not based off any other projects, the only reference available would be the food chain diagram provided.
+
+1.5 Overview
+This system will allow a user to put in the number of each animal the ecosystem is to start with. The ecosystem will be a 150x150 square grid with the animals moving between grid squares, animals may eat other animals that are in the same grid square as they are provided that it is an animal they eat. At the end of each day the location of all of the animals left in the ecosystem will be printed out to the user.
 
 
 2 Current software architecture
-New design
-
-The second section describes the architecture of the system being replaced. If there is no previous system, this section can be replaced by a survey of current architectures for similar systems. The purpose of this section is to make explicit the background information that system architects used, their assumptions, and common issues the new system will address.
- 
+This project will be a new design of a completely new system made entirely from scratch, there is no current software.
 
 3 Proposed software architecture
 3.1 Overview
@@ -39,30 +55,24 @@ many items an error shall be received.
 3. Proposed software architecture
 The third section documents the system design model of the new system.
  
-    3.1 Overview
-The overview presents a bird�s-eye view of the software architecture and briefly describes the assignment of functionality to each subsystem.
+3.1 Overview
+The overview presents a birds-eye view of the software architecture and briefly describes the assignment of functionality to each subsystem.
  
-    3.2 Subsystem decomposition
+3.2 Subsystem decomposition
 Subsystem decomposition describes the decomposition into subsystems and the responsibilities of each. This is the main product of system design.
  
-    3.3 Hardware/software mapping
+3.3 Hardware/software mapping
 Hardware/software mapping describes how subsystems are assigned to hardware and off-the-shelf components. It also lists the issues introduced by multiple nodes and software reuse.
  
-    3.4 Persistent data management
+3.4 Persistent data management
 Persistent data management describes the persistent data stored by the system and the data management infrastructure required for it. This section typically includes the description of data schemes, the selection of a database, and the description of the encapsulation of the database.
  
-    3.5 Access control and security
+3.5 Access control and security
 Access control and security describes the user model of the system in terms of anaccess matrix. This section also describes security issues, such as the selection of an authentication mechanism, the use of encryption, and the management of keys.
  
-    3.6 Global software control
+3.6 Global software control
 Global software control describes how the global software control is implemented. In particular, this section should describe how requests are initiated and how subsystems synchronize. This section should list and address synchronization and concurrency issues.
  
-    3.7 Boundary conditions
+3.7 Boundary conditions
 Boundary conditions describes the start-up, shutdown, and error behavior of the system. (If new use cases are discovered for system administration, these should be included in the requirements analysis document, not in this section.)
  
-4. Subsystem services
-Glossary
-The fourth section, Subsystem services, describes the services provided by each subsystem in terms of operations. Although this section is usually empty or incomplete in the first versions of the SDD, this section serves as a reference for teams for the boundaries between their subsystems. The interface of each subsystem is derived from this section and detailed in the Object Design Document.
-
-
-
