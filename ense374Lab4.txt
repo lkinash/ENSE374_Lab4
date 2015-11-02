@@ -39,40 +39,19 @@ This project is not based off any other projects, the only reference available w
 1.5 Overview
 This system will allow a user to put in the number of each animal the ecosystem is to start with. The ecosystem will be a 150x150 square grid with the animals moving between grid squares, animals may eat other animals that are in the same grid square as they are provided that it is an animal they eat. At the end of each day the location of all of the animals left in the ecosystem will be printed out to the user.
 
-
 2 Current software architecture
 This project will be a new design of a completely new system made entirely from scratch, there is no current software.
 
 3 Proposed software architecture
 3.1 Overview
-The programming language is Java and the application will run on a personal computer.
+The programming language is Java and the application will run on a personal computer. It will be a jar file so any user can use it and it will have text input and output for the number of animals
+
 3.2 Subsystem decomposition
-UML Diagram. Specifically a class diagram.
+A UML Diagram, specifically a class diagram for this project is included in the repository as well. It details all of the classes and the structure of the program. 
+
 3.3 Boundary conditions
 When world is created the user shall be allowed to populate the world. If a user inputs far too
-many items an error shall be received.
+many items an error shall be received. This will ensure that there is not an unreal amount of animals that will override the program and cause it to malfunction, this limit will be picked once the program limitations are determined.
 
-3. Proposed software architecture
-The third section documents the system design model of the new system.
- 
-3.1 Overview
-The overview presents a birds-eye view of the software architecture and briefly describes the assignment of functionality to each subsystem.
- 
-3.2 Subsystem decomposition
-Subsystem decomposition describes the decomposition into subsystems and the responsibilities of each. This is the main product of system design.
- 
-3.3 Hardware/software mapping
-Hardware/software mapping describes how subsystems are assigned to hardware and off-the-shelf components. It also lists the issues introduced by multiple nodes and software reuse.
- 
-3.4 Persistent data management
-Persistent data management describes the persistent data stored by the system and the data management infrastructure required for it. This section typically includes the description of data schemes, the selection of a database, and the description of the encapsulation of the database.
- 
-3.5 Access control and security
-Access control and security describes the user model of the system in terms of anaccess matrix. This section also describes security issues, such as the selection of an authentication mechanism, the use of encryption, and the management of keys.
- 
-3.6 Global software control
-Global software control describes how the global software control is implemented. In particular, this section should describe how requests are initiated and how subsystems synchronize. This section should list and address synchronization and concurrency issues.
- 
-3.7 Boundary conditions
-Boundary conditions describes the start-up, shutdown, and error behavior of the system. (If new use cases are discovered for system administration, these should be included in the requirements analysis document, not in this section.)
+
  
