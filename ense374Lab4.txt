@@ -1,0 +1,57 @@
+Lindsey Kinash
+200305103
+ENSE 374
+Lab 4
+
+Outline
+Description
+
+1 Introduction
+
+1.1 Purpose
+The purpose is to create a virtual environment in which these animals live. No external forces such as weather will affect our system. This means that at the end the animals will likely all die off and the only thing left may be some trees or grass. The virtual environment will be interactive in that the user will be asked to enter the number of each animal they wish the environment to start with. 
+
+1.2 Design Goals
+The rules laid out shall be:
+World is 150 kms square. Carve up the world into a grid of 150/150 (2D environment)
+Animals without wings can travel three kms in a day. (3 grid locations)
+Animals with wings can travel 5kms.
+Insects can travel 1km.
+Animals will either travel zero or somewhere up to the maximum number of grid locations each day
+Animals will not travel diagonally for simplicity
+Animals will move their entire days worth of grid locations all in one direction
+The number of tiles moved and direction the animal will be moving will be determined by a random number generator that will tell the animal what to do
+The animals will each have a probability of being eaten if some other animal is on the same grid location as they are, this probability will determine if the other animals on the square will eat them or not
+Animals will only eat or be eaten in the grid square on which they end the day, not while moving
+Plants can not run away or defend themselves thus if an animal that eats a plant ends the day on a grid location with a plant on it they get to eat that day
+Everything must eat within two days, a counter of lives for each animal will tell how many days they have left until they die
+If the animal dies or is eaten they will be eliminated from the simulation
+No reproducing of any kind. Everything will die.
+Print out only what is living at each location at the end of the day including number of each animal that is present
+Plants do not eat anything in the ecosystem so they will not need to eat to live but they may be eaten
+
+1.3 Definitions, acronyms, and abbreviations
+The animals well be split up in to three different categories: plants, predators and super predators. The plants are the only animal that can be eaten but can not eat, plants do not ever die because they need to eat. The predators eat either plants or other animals and can also be eaten by other animals, they are in the middle of the food chain. The super predators are the ones that do not have any animals in the food chain that eat them, they eat other animals and die if they can not find food to eat.
+
+1.4 References
+This project is not based off any other projects, the only reference available would be the food chain diagram provided.
+
+1.5 Overview
+This system will allow a user to put in the number of each animal the ecosystem is to start with. The ecosystem will be a 150x150 square grid with the animals moving between grid squares, animals may eat other animals that are in the same grid square as they are provided that it is an animal they eat. At the end of each day the location of all of the animals left in the ecosystem will be printed out to the user.
+
+2 Current software architecture
+This project will be a new design of a completely new system made entirely from scratch, there is no current software.
+
+3 Proposed software architecture
+3.1 Overview
+The programming language is Java and the application will run on a personal computer. It will be a jar file so any user can use it and it will have text input and output for the number of animals
+
+3.2 Subsystem decomposition
+A UML Diagram, specifically a class diagram for this project is included in the repository as well. It details all of the classes and the structure of the program. 
+
+3.3 Boundary conditions
+When world is created the user shall be allowed to populate the world. If a user inputs far too
+many items an error shall be received. This will ensure that there is not an unreal amount of animals that will override the program and cause it to malfunction, this limit will be picked once the program limitations are determined.
+
+
+ 
