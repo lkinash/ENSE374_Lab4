@@ -6,18 +6,28 @@ public class Superpreditor {
 	private String type;
 	private boolean eatsToday;
 	
-	public void setDaysLeft(int daysLeft)
+	public Superpreditor()
 	{
+		int daysLeft = 1000;
+		type = null;
+		eatsToday = false;
+	}
+	
+	
+	public void setDaysLeft(int days)
+	{
+		daysLeft = days;
 		return;
 	}
 
 	public int getDaysLeft(int daysLeft)
 	{
-		return 1;
+		return daysLeft;
 	}
 	
 	public void setType(String typeName)
 	{
+		type = typeName;					//sets the type of animal to the value passed in
 		return;
 	}
 	
