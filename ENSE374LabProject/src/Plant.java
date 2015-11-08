@@ -12,7 +12,7 @@ import java.util.*;
 // Wolf: 8
 // Fox: 9
 
-public class Plant {
+public class Plant extends Animal{
 
 	private boolean canBeEatenBy[];
 	private String type;

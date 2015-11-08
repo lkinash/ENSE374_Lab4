@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Superpreditor {
+public class Superpreditor extends Animal{
 
 	private int daysLeft;
 	private String type;
