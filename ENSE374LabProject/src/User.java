@@ -1,12 +1,13 @@
 
 public class User {
 
-	World world = new World();
+
 	
 	public static void main(String [] args)
 	{
-		
-		
+		World world = new World();
+		world.userPopulate();
+	
 	}
 	
 }
