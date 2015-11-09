@@ -15,14 +15,12 @@ import java.util.*;
 public class Plant extends Animal{
 
 	private boolean canBeEatenBy[];
-	private String type;
 	private boolean eatenToday;
 	
 	public Plant()
 	{
 		for(int i = 0; i < 11; i++)
 			canBeEatenBy[i] = false;
-		type = null;
 		eatenToday = false;
 	}
 	
@@ -73,17 +71,6 @@ public class Plant extends Animal{
 			animalId = 9;
 		
 		return canBeEatenBy[animalId];
-	}
-	
-	public void setType(String typeName)
-	{
-		type = typeName;
-		return;
-	}
-	
-	public String getType()
-	{
-		return type;
 	}
 	
 	public boolean getEatenToday()
