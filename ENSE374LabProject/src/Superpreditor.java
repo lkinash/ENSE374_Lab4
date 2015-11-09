@@ -5,9 +5,10 @@ public class Superpreditor extends Animal{
 	private int daysLeft;
 	private boolean eatsToday;
 	
-	public Superpreditor()
+	public Superpreditor(String name, int maxMoves)
 	{
-		int daysLeft = 1000;
+		super(name, maxMoves);
+		int daysLeft = 2;
 		eatsToday = false;
 	}
 	

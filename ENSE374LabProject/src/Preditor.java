@@ -7,13 +7,15 @@ public class Preditor extends Animal{
 	private boolean eatenToday;
 	private boolean eatsToday;
 	
-	public Preditor()
+	public Preditor(String name, int maxMoves)
 	{
+		super(name, maxMoves);
 		for(int i = 0; i < 11; i++)
 			canBeEatenBy[i] = false;
-		int daysLeft = 1000;
+		int daysLeft = 2;
 		eatenToday = false;
 		eatsToday = false;
+		setCanBeEatenBy(name);
 	}
 	
 	public void setDaysLeft(int daysLeft)

@@ -19,33 +19,58 @@ public class World {
 	
 	public void userPopulate()
 	{
-		populateFor("grass");
-		populateFor("Tree/Shrub");
-		populateFor("caterpillar");
-		populateFor("grasshopper");
-		populateFor("deer");
-		populateFor("bluejay");
-		populateFor("squirel");
-		populateFor("mouse");
-		populateFor("rabbit");
-		populateFor("hawk");								
-		populateFor("wolf");
-		populateFor("fox");
+		populateForPlant("grass", 0);
+		populateForPlant("Tree/Shrub", 0);
+		populateForPred("caterpillar", 1);
+		populateForPred("grasshopper", 1);
+		populateForPred("deer", 3);
+		populateForPred("bluejay", 5);
+		populateForPred("squirel", 3);
+		populateForPred("mouse", 3);
+		populateForPred("rabbit", 3);
+		populateForSuper("hawk", 5);								
+		populateForSuper("wolf", 3);
+		populateForSuper("fox", 3);
 
 		return;
 	}
 	
-	public void populateFor(String animalName)
+	public void populateForPlant(String animalName, int maxMoves)
 	{
 		int numberOf = promptUser(animalName);
 		for(int i = 0; i < numberOf; i++)
 		{
 			int xCoordinate = randomGenerator();
 			int yCoordinate = randomGenerator();
-			area[xCoordinate][yCoordinate].addAnimal(animalName);
+			area[xCoordinate][yCoordinate].addAnimalPlant(animalName, maxMoves);
 		}
 		return;
 	}
+	
+	public void populateForPred(String animalName, int maxMoves)
+	{
+		int numberOf = promptUser(animalName);
+		for(int i = 0; i < numberOf; i++)
+		{
+			int xCoordinate = randomGenerator();
+			int yCoordinate = randomGenerator();
+			area[xCoordinate][yCoordinate].addAnimalPred(animalName, maxMoves);
+		}
+		return;
+	}
+	
+	public void populateForSuper(String animalName, int maxMoves)
+	{
+		int numberOf = promptUser(animalName);
+		for(int i = 0; i < numberOf; i++)
+		{
+			int xCoordinate = randomGenerator();
+			int yCoordinate = randomGenerator();
+			area[xCoordinate][yCoordinate].addAnimalSuper(animalName, maxMoves);
+		}
+		return;
+	}
+	
 	
 	public void printAnimals()
 	{

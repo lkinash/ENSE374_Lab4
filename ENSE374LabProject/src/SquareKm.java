@@ -9,9 +9,21 @@ public class SquareKm {
 		animalList = null;
 	}
 	
-	public void addAnimal(String animalName)
+	public void addAnimalSuper(String animalName, int maxMoves)
 	{
-		animalList.add(new Animal(animalName));
+		animalList.add(new Superpreditor(animalName, maxMoves));
+		return;
+	}
+	
+	public void addAnimalPred(String animalName, int maxMoves)
+	{
+		animalList.add(new Preditor(animalName, maxMoves));
+		return;
+	}
+	
+	public void addAnimalPlant(String animalName, int maxMoves)
+	{
+		animalList.add(new Plant(animalName, maxMoves));
 		return;
 	}
 	

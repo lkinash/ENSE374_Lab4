@@ -17,11 +17,13 @@ public class Plant extends Animal{
 	private boolean canBeEatenBy[];
 	private boolean eatenToday;
 	
-	public Plant()
+	public Plant(String name, int maxMoves)
 	{
+		super(name, maxMoves);
 		for(int i = 0; i < 11; i++)
 			canBeEatenBy[i] = false;
 		eatenToday = false;
+		setCanBeEatenBy(name);
 	}
 	
 	public void setCanBeEatenBy(String typeName)			//based on if the plant is grass or not it will assign which animals can eat it

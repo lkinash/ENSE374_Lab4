@@ -6,11 +6,19 @@ public class Animal {
 	private int maxMoves;
 	private String type;
 	
-	public Animal(String typeName)
+	public Animal()
 	{
 		moves = 0;
 		moveDir = 0;
 		maxMoves = 0;
+		type = null;
+	}
+	
+	public Animal(String typeName, int animalMovesMax)
+	{
+		moves = 0;
+		moveDir = 0;
+		maxMoves = animalMovesMax;
 		type = typeName;
 	}
 	
