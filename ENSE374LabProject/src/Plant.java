@@ -14,34 +14,30 @@ import java.util.*;
 
 public class Plant extends Animal{
 
-	private boolean canBeEatenBy[];
+	private boolean[] canBeEatenBy  = new boolean[11];
 	private boolean eatenToday;
 	
 	public Plant(String name, int maxMoves)
 	{
 		super(name, maxMoves);
-		for(int i = 0; i < 11; i++)
-			canBeEatenBy[i] = false;
 		eatenToday = false;
 		setCanBeEatenBy(name);
 	}
 	
 	public void setCanBeEatenBy(String typeName)			//based on if the plant is grass or not it will assign which animals can eat it
 	{	
-		if(typeName == "grass")					//if it is a grass
+		Arrays.fill(canBeEatenBy, Boolean.FALSE);		
+		
+		if(typeName == "grass")						//if it is a grass
 		{
-			canBeEatenBy[1] = true;				//then grasshopper
-			canBeEatenBy[2] = true;				//and deer
-			canBeEatenBy[5] = true;				//and mouse
-			canBeEatenBy[6] = true;				//and rabbit
-		}										//these are set to true since these are the animals that can eat grass
-		else									//else if here because if it is not grass it is trees and shrubs 
+			Arrays.fill(canBeEatenBy, 1 , 2 ,Boolean.TRUE);					//then grasshopper, and deer
+			Arrays.fill(canBeEatenBy, 5 , 6 ,Boolean.TRUE);					//and mouse and rabbit
+		}																	//these are set to true since these are the animals that can eat grass
+		else																//else if here because if it is not grass it is trees and shrubs 
 		{
-			canBeEatenBy[0] = true;				//then caterpillar
-			canBeEatenBy[3] = true;				//and bluejay
-			canBeEatenBy[4] = true;				//and squirel
-			canBeEatenBy[5] = true;				//and mouse are set true since they can eat the trees and shrubs
-		}
+			Arrays.fill(canBeEatenBy, 0 , 0 ,Boolean.TRUE);		//then caterpillar
+			Arrays.fill(canBeEatenBy, 3, 5 ,Boolean.TRUE);		//and bluejay, squirel, and mouse are set true since they can eat the trees and shrubs
+		}	
 		
 		return;
 	}

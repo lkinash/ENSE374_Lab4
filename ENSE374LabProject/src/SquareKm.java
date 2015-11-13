@@ -2,11 +2,11 @@ import java.util.*;
 
 public class SquareKm {
 
-	private ArrayList <Animal> animalList;
+	private ArrayList <Animal> animalList  = new ArrayList <Animal>() ;
 	
 	public SquareKm()
 	{
-		animalList = null;
+	
 	}
 	
 	public void addAnimalSuper(String animalName, int maxMoves)
@@ -37,6 +37,14 @@ public class SquareKm {
 	{
 		int count = Collections.frequency(animalList, animalName);
 		return count;
+	}
+	
+	public void printAnimals(int x, int y)
+	{
+		for (Animal temp : animalList) {
+			System.out.println( x + ",  "+ y + "  contains: " + temp.getType() + ".");
+		}
+		return;
 	}
 	
 }

@@ -3,15 +3,13 @@ import java.util.*;
 public class Preditor extends Animal{
 
 	private int daysLeft;
-	private boolean canBeEatenBy[];
+	private boolean[] canBeEatenBy  = new boolean[11];
 	private boolean eatenToday;
 	private boolean eatsToday;
 	
 	public Preditor(String name, int maxMoves)
 	{
 		super(name, maxMoves);
-		for(int i = 0; i < 11; i++)
-			canBeEatenBy[i] = false;
 		int daysLeft = 2;
 		eatenToday = false;
 		eatsToday = false;
@@ -30,36 +28,38 @@ public class Preditor extends Animal{
 	
 	public void setCanBeEatenBy(String typeName)
 	{
+			
+		Arrays.fill(canBeEatenBy, Boolean.FALSE);
+		
 		if(typeName == "caterpillar")					//if it is a caterpillar
 		{
-			canBeEatenBy[3] = true;						//bluejay
+			Arrays.fill(canBeEatenBy, 3 , 3 ,Boolean.TRUE);			//bluejay
 		}
 		else if(typeName == "grasshopper")					//if it is a grasshopper
 		{
-			canBeEatenBy[3] = true;						//bluejay
+			Arrays.fill(canBeEatenBy, 3 , 3 ,Boolean.TRUE); 		//bluejay
 		}
 		else if(typeName == "deer")					//if it is a deer
 		{
-			canBeEatenBy[8] = true;						//wolf
+			Arrays.fill(canBeEatenBy, 8 , 8 ,Boolean.TRUE);			//wolf
 		}
 		else if(typeName == "bluejay")					//if it is a bluejay
 		{
-			canBeEatenBy[9] = true;						//fox
+			Arrays.fill(canBeEatenBy, 9 , 9 ,Boolean.TRUE);					//fox
 		}
 		else if(typeName == "squirel")					//if it is a squirel
 		{
-			canBeEatenBy[7] = true;						//hawk
-			canBeEatenBy[9] = true;						//fox
+			Arrays.fill(canBeEatenBy, 7 , 7 ,Boolean.TRUE);						//hawk
+			Arrays.fill(canBeEatenBy, 9 , 9 ,Boolean.TRUE);					//fox
 		}
 		else if(typeName == "mouse")					//if it is a mouse
 		{
-			canBeEatenBy[7] = true;						//hawk
-			canBeEatenBy[9] = true;						//fox
+			Arrays.fill(canBeEatenBy, 7 , 7 ,Boolean.TRUE);						//hawk
+			Arrays.fill(canBeEatenBy, 9 , 9 ,Boolean.TRUE);						//fox
 		}
 		else if(typeName == "rabbit")					//if it is a rabbit
 		{
-			canBeEatenBy[9] = true;						//fox
-			canBeEatenBy[8] = true;						//wolf
+			Arrays.fill(canBeEatenBy, 7 , 8 ,Boolean.TRUE);						//fox and wolf
 		}
 		
 		return;

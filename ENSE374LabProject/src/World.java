@@ -4,7 +4,7 @@ import java.util.*;
 public class World {
 
 	private static int size = 150;
-	private SquareKm area[][];
+	private SquareKm[][] area = new SquareKm[size][size];
 	
 	public World()
 	{
@@ -74,6 +74,13 @@ public class World {
 	
 	public void printAnimals()
 	{
+		for(int i = 0; i< size; i++)
+		{
+			for(int j = 0; j < size; j++)
+			{
+				area[i][j].printAnimals(i+1, j+1);
+			}
+		}
 		
 		return;
 	}
