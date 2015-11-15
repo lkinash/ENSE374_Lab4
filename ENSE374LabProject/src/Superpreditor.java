@@ -12,7 +12,6 @@ public class Superpreditor extends Animal{
 		eatsToday = false;
 	}
 	
-	
 	public void setDaysLeft(int days)
 	{
 		daysLeft = days;
@@ -26,11 +25,12 @@ public class Superpreditor extends Animal{
 	
 	public boolean getEatsToday()
 	{
-		return true;
+		return eatsToday;
 	}
 	
-	public void setEatsToday(boolean eatsToday)
+	public void setEatsToday(boolean today)
 	{
+		eatsToday = today;
 		return;
 	}
 	

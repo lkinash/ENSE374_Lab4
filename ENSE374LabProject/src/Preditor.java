@@ -16,8 +16,9 @@ public class Preditor extends Animal{
 		setCanBeEatenBy(name);
 	}
 	
-	public void setDaysLeft(int daysLeft)
+	public void setDaysLeft(int days)
 	{
+		daysLeft = days;
 		return;
 	}
 
@@ -96,7 +97,7 @@ public class Preditor extends Animal{
 
 	public boolean getEatenToday()
 	{
-		return true;
+		return eatenToday;
 	}
 	
 	public void setEatenToday(boolean eaten)

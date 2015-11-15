@@ -5,6 +5,7 @@ public class World {
 
 	private static int size = 150;
 	private SquareKm[][] area = new SquareKm[size][size];
+	private int maxNumberOfType = 40;
 	
 	public World()
 	{
@@ -71,7 +72,6 @@ public class World {
 		return;
 	}
 	
-	
 	public void printAnimals()
 	{
 		for(int i = 0; i< size; i++)
@@ -91,6 +91,15 @@ public class World {
 		System.out.print("How many " + animalName + " would you like to put in the world? ");
 		int number = in.nextInt();
 		in.nextLine();
+		if(number > maxNumberOfType)
+		{
+			while(number >  maxNumberOfType)
+			{
+			System.out.print("That is more than the maximum number of " + animalName + " allowed, The maximum is " + maxNumberOfType + ", please enter a new number: ");
+			number = in.nextInt();
+			in.nextLine();
+			}
+		}
 		return number;
 	}
 	

@@ -4,11 +4,6 @@ public class SquareKm {
 
 	private ArrayList <Animal> animalList  = new ArrayList <Animal>() ;
 	
-	public SquareKm()
-	{
-	
-	}
-	
 	public void addAnimalSuper(String animalName, int maxMoves)
 	{
 		animalList.add(new Superpreditor(animalName, maxMoves));

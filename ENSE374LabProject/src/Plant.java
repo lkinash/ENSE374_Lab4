@@ -73,11 +73,12 @@ public class Plant extends Animal{
 	
 	public boolean getEatenToday()
 	{
-		return true;
+		return eatenToday;
 	}
 	
 	public void setEatenToday(boolean getsEaten)
 	{
+		eatenToday = getsEaten;
 		return;
 	}
 	
