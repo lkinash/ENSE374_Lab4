@@ -7,6 +7,7 @@ public class User {
 		World world = new World();
 		world.userPopulate();
 		world.printAnimals();
+		
 	}
 	
 	

@@ -28,12 +28,6 @@ public class SquareKm {
 		return;
 	}
 	
-	public int getNumberOFAnimal(Animal animalName)
-	{
-		int count = Collections.frequency(animalList, animalName);
-		return count;
-	}
-	
 	public void printAnimals(int x, int y)
 	{
 		for (Animal temp : animalList) {
@@ -41,5 +35,42 @@ public class SquareKm {
 		}
 		return;
 	}
-	
+
+	public void checkEating()
+	{
+		int num = animalList.size();
+		int i = num;
+		Animal temp1, temp2;
+		if(num > 1)
+		{
+		while (i > 0)
+		{
+	        temp1 = animalList.get(i - 1);
+	        if(temp1.getIsType(temp1.getType()) == "plant")
+	        {
+	        	Plant tempPlant1;
+	        	
+	        }
+	        else if(temp1.getIsType(temp1.getType()) == "pred")
+	        {
+	        	Preditor tempPred1;
+	        	
+	        }
+	        if(temp1.getIsType(temp1.getType()) == "super")
+	        {
+	        	Superpreditor tempSuper1;
+	        	
+	        }
+	        for(int j = i; j > 0; j--)
+	        {
+	        	temp2 = animalList.get(j);
+	        	
+	        }
+	       
+	        
+	    }
+		}
+		return;
+	}
+
 }

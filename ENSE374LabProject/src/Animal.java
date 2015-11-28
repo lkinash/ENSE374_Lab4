@@ -1,3 +1,5 @@
+import java.util.Arrays;
+import java.util.Random;
 
 public class Animal {
 
@@ -65,5 +67,44 @@ public class Animal {
 		maxMoves = numMovesMax;
 		return;
 	}
+		
+	public String getIsType(String typeName)
+	{
+
+		if(typeName == "caterpillar")
+			return "pred";
+		else if(typeName == "grasshopper")
+			return "pred";
+		else if(typeName == "deer")
+			return "pred";
+		else if(typeName == "bluejay")
+			return "pred";
+		else if(typeName == "squirel")
+			return "pred";
+		else if(typeName == "mouse")
+			return "pred";
+		else if(typeName == "rabbit")
+			return "pred";
+		else if(typeName == "hawk")
+			return "super";
+		else if(typeName == "wolf")
+			return "super";
+		else if(typeName == "fox")
+			return "super";
+		else
+			return "plant";
+	}
+
+	public void determineMove()
+	{
+		moves = randomGenerator(getMaxMoves());
+		moveDir = randomGenerator(3);
+	}
 	
+	public int randomGenerator(int max)
+	{
+		Random rand = new Random();
+		int number = rand.nextInt(max);
+		return number;
+	}
 }

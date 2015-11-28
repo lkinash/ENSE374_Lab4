@@ -41,8 +41,8 @@ public class World {
 		int numberOf = promptUser(animalName);
 		for(int i = 0; i < numberOf; i++)
 		{
-			int xCoordinate = randomGenerator();
-			int yCoordinate = randomGenerator();
+			int xCoordinate = randomGenerator(size);
+			int yCoordinate = randomGenerator(size);
 			area[xCoordinate][yCoordinate].addAnimalPlant(animalName, maxMoves);
 		}
 		return;
@@ -53,8 +53,8 @@ public class World {
 		int numberOf = promptUser(animalName);
 		for(int i = 0; i < numberOf; i++)
 		{
-			int xCoordinate = randomGenerator();
-			int yCoordinate = randomGenerator();
+			int xCoordinate = randomGenerator(size);
+			int yCoordinate = randomGenerator(size);
 			area[xCoordinate][yCoordinate].addAnimalPred(animalName, maxMoves);
 		}
 		return;
@@ -65,8 +65,8 @@ public class World {
 		int numberOf = promptUser(animalName);
 		for(int i = 0; i < numberOf; i++)
 		{
-			int xCoordinate = randomGenerator();
-			int yCoordinate = randomGenerator();
+			int xCoordinate = randomGenerator(size);
+			int yCoordinate = randomGenerator(size);
 			area[xCoordinate][yCoordinate].addAnimalSuper(animalName, maxMoves);
 		}
 		return;
@@ -88,7 +88,7 @@ public class World {
 	public int promptUser(String animalName)
 	{
 		Scanner in = new Scanner(System.in);
-		System.out.print("How many " + animalName + " would you like to put in the world? ");
+		/*System.out.print("How many " + animalName + " would you like to put in the world? ");
 		int number = in.nextInt();
 		in.nextLine();
 		if(number > maxNumberOfType)
@@ -99,15 +99,29 @@ public class World {
 			number = in.nextInt();
 			in.nextLine();
 			}
-		}
-		return number;
+		}*/
+		//return number;
+		return 15;
 	}
 	
-	public int randomGenerator()
+	public int randomGenerator(int max)
 	{
 		Random rand = new Random();
-		int number = rand.nextInt(size);
+		int number = rand.nextInt(max);
 		return number;
+	}
+
+	public void moveAnimals()
+	{
+		for(int i = 0; i< size; i++)
+		{
+			for(int j = 0; j < size; j++)
+			{
+				area[i][j].;
+			}
+		}
+		
+		return;
 	}
 	
 }

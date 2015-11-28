@@ -7,6 +7,7 @@ public class Preditor extends Animal{
 	private boolean eatenToday;
 	private boolean eatsToday;
 	
+	
 	public Preditor(String name, int maxMoves)
 	{
 		super(name, maxMoves);
