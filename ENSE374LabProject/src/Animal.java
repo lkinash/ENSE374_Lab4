@@ -7,6 +7,8 @@ public class Animal {
 	private int moveDir;
 	private int maxMoves;
 	private String type;
+	private int xLoc;
+	private int yLoc;
 	
 	public Animal()
 	{
@@ -16,12 +18,14 @@ public class Animal {
 		type = null;
 	}
 	
-	public Animal(String typeName, int animalMovesMax)
+	public Animal(String typeName, int animalMovesMax, int x, int y)
 	{
 		moves = 0;
 		moveDir = 0;
 		maxMoves = animalMovesMax;
 		type = typeName;
+		xLoc = x;
+		yLoc = y;
 	}
 	
 	public String getType()
@@ -50,9 +54,31 @@ public class Animal {
 		return maxMoves;
 	}
 	
+	public int getXLoc()
+	{
+		return xLoc;
+	}
+	
+	public int getYLoc()
+	{
+		return yLoc;
+	}
+	
 	public void setMoves(int numMoves)
 	{
 		moves = numMoves;
+		return;
+	}
+	
+	public void setXLoc(int newLoc)
+	{
+		xLoc = newLoc;
+		return;
+	}
+	
+	public void setYLoc(int newLoc)
+	{
+		yLoc = newLoc;
 		return;
 	}
 	
@@ -70,7 +96,6 @@ public class Animal {
 		
 	public String getIsType(String typeName)
 	{
-
 		if(typeName == "caterpillar")
 			return "pred";
 		else if(typeName == "grasshopper")
@@ -98,7 +123,7 @@ public class Animal {
 	public void determineMove()
 	{
 		moves = randomGenerator(getMaxMoves());
-		moveDir = randomGenerator(3);
+		moveDir = randomGenerator(4);	
 	}
 	
 	public int randomGenerator(int max)
@@ -107,4 +132,54 @@ public class Animal {
 		int number = rand.nextInt(max);
 		return number;
 	}
+	
+	public void newLocation()
+	{	
+		if(getIsType(type) == "plant")
+			return;
+		
+		determineMove();
+
+		if(moveDir == 0)      //moves east
+		{
+			xLoc = (xLoc + moves);
+		}
+		else if(moveDir == 1)		//moves north
+		{
+			yLoc = (yLoc + moves);
+		}
+		else if(moveDir == 2)		//moves west
+		{
+			xLoc = (xLoc - moves);
+		}
+		else if(moveDir == 3)		//moves south
+		{
+			yLoc = (yLoc - moves);
+		}
+		correctBounds();
+		return;
+	}
+	
+	public void correctBounds()
+	{
+		if(xLoc < 0 )
+		{
+			xLoc = 0;
+		}
+		else if(xLoc > 150)
+		{
+			xLoc = 150;
+		}
+		
+		if(yLoc < 0)
+		{
+			yLoc = 0;
+		}
+		else if(yLoc > 150)
+		{
+			yLoc = 150;
+		}
+		return; 
+	}
+	
 }

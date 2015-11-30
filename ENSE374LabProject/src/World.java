@@ -13,61 +13,90 @@ public class World {
 		{
 			for(int j = 0; j < size; j++)
 			{
-				area[i][j] = new SquareKm();
+				area[i][j] = new SquareKm(i, j);
 			}
 		}
 	}
 	
 	public void userPopulate()
 	{
-		populateForPlant("grass", 0);
-		populateForPlant("Tree/Shrub", 0);
-		populateForPred("caterpillar", 1);
-		populateForPred("grasshopper", 1);
-		populateForPred("deer", 3);
-		populateForPred("bluejay", 5);
-		populateForPred("squirel", 3);
-		populateForPred("mouse", 3);
-		populateForPred("rabbit", 3);
-		populateForSuper("hawk", 5);								
-		populateForSuper("wolf", 3);
-		populateForSuper("fox", 3);
+		populateForPlant("grass");
+		populateForPlant("Tree/Shrub");
+		populateForPred("caterpillar");
+		populateForPred("grasshopper");
+		populateForPred("deer");
+		populateForPred("bluejay");
+		populateForPred("squirel");
+		populateForPred("mouse");
+		populateForPred("rabbit");
+		populateForSuper("hawk");								
+		populateForSuper("wolf");
+		populateForSuper("fox");
 
 		return;
 	}
 	
-	public void populateForPlant(String animalName, int maxMoves)
+	public int maxMovesAnimal(String typeName)
 	{
+		if(typeName == "caterpillar")
+			return 1;
+		else if(typeName == "grasshopper")
+			return 1;
+		else if(typeName == "deer")
+			return 3;
+		else if(typeName == "bluejay")
+			return 5;
+		else if(typeName == "squirel")
+			return 3;
+		else if(typeName == "mouse")
+			return 3;
+		else if(typeName == "rabbit")
+			return 3;
+		else if(typeName == "hawk")
+			return 5;
+		else if(typeName == "wolf")
+			return 3;
+		else if(typeName == "fox")
+			return 3;
+		else
+			return 0;
+	}
+	
+	public void populateForPlant(String animalName)
+	{
+		int maxMoves = maxMovesAnimal(animalName);
 		int numberOf = promptUser(animalName);
 		for(int i = 0; i < numberOf; i++)
 		{
 			int xCoordinate = randomGenerator(size);
 			int yCoordinate = randomGenerator(size);
-			area[xCoordinate][yCoordinate].addAnimalPlant(animalName, maxMoves);
+			area[xCoordinate][yCoordinate].addAnimalPlant(animalName, maxMoves, xCoordinate, yCoordinate);
 		}
 		return;
 	}
 	
-	public void populateForPred(String animalName, int maxMoves)
+	public void populateForPred(String animalName)
 	{
+		int maxMoves = maxMovesAnimal(animalName);
 		int numberOf = promptUser(animalName);
 		for(int i = 0; i < numberOf; i++)
 		{
 			int xCoordinate = randomGenerator(size);
 			int yCoordinate = randomGenerator(size);
-			area[xCoordinate][yCoordinate].addAnimalPred(animalName, maxMoves);
+			area[xCoordinate][yCoordinate].addAnimalPred(animalName, maxMoves, xCoordinate, yCoordinate);
 		}
 		return;
 	}
 	
-	public void populateForSuper(String animalName, int maxMoves)
+	public void populateForSuper(String animalName)
 	{
+		int maxMoves = maxMovesAnimal(animalName);
 		int numberOf = promptUser(animalName);
 		for(int i = 0; i < numberOf; i++)
 		{
 			int xCoordinate = randomGenerator(size);
 			int yCoordinate = randomGenerator(size);
-			area[xCoordinate][yCoordinate].addAnimalSuper(animalName, maxMoves);
+			area[xCoordinate][yCoordinate].addAnimalSuper(animalName, maxMoves, xCoordinate, yCoordinate);
 		}
 		return;
 	}
@@ -78,7 +107,7 @@ public class World {
 		{
 			for(int j = 0; j < size; j++)
 			{
-				area[i][j].printAnimals(i+1, j+1);
+				area[i][j].printAnimals(i, j);
 			}
 		}
 		
@@ -113,11 +142,53 @@ public class World {
 
 	public void moveAnimals()
 	{
+		int populated, x, y, XandY, tempDays, maxMoves;
+		String tempType, tempKind;
 		for(int i = 0; i< size; i++)
 		{
 			for(int j = 0; j < size; j++)
 			{
-				area[i][j].;
+				area[i][j].animalMove();
+				populated = area[i][j].numberAnimals();
+				for(int k = 0; k < populated ; k++)
+				{
+					System.out.println("Populated: " + populated);
+					XandY = area[i][j].checkMove(k);
+					if(XandY != -1)
+					{
+						System.out.println(k);
+						x = XandY/1000;
+						y = XandY - (x * 1000);
+						
+						tempType = area[i][j].getAnimalType(k);
+						tempKind = area[i][j].getAnimalKind(k);
+						maxMoves = maxMovesAnimal(tempType);
+						if(tempKind == "plant")
+						{
+							tempDays = 0;
+							area[x][y].addAnimalPlant(tempType, maxMoves, x, y, tempDays);
+						}
+						else if(tempKind == "pred")
+						{
+							tempDays = area[i][j].getAnimalDaysLeft(k);
+							area[x][y].addAnimalPred(tempType, maxMoves, x, y, tempDays);
+						}
+						else if(tempKind == "super")
+						{
+							tempDays = area[i][j].getAnimalDaysLeft(k);
+							area[x][y].addAnimalSuper(tempType, maxMoves, x, y, tempDays);
+						}
+						
+						//System.out.println("XandY: " + XandY + " i and j: " + i + ", " + j + "   x and y: "  + x + ", " + y + "    Type: " + tempType + "   maxMoves: " + maxMoves);
+						
+						
+						area[i][j].deleteAnimal(k);
+						populated--;
+						k--;
+						
+					}
+					
+				}
 			}
 		}
 		
@@ -125,3 +196,4 @@ public class World {
 	}
 	
 }
+

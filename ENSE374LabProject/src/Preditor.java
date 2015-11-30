@@ -8,10 +8,19 @@ public class Preditor extends Animal{
 	private boolean eatsToday;
 	
 	
-	public Preditor(String name, int maxMoves)
+	public Preditor(String name, int maxMoves, int x, int y)
 	{
-		super(name, maxMoves);
+		super(name, maxMoves, x, y);
 		int daysLeft = 2;
+		eatenToday = false;
+		eatsToday = false;
+		setCanBeEatenBy(name);
+	}
+
+	public Preditor(String name, int maxMoves, int x, int y, int days)
+	{
+		super(name, maxMoves, x, y);
+		int daysLeft = days;
 		eatenToday = false;
 		eatsToday = false;
 		setCanBeEatenBy(name);
@@ -23,9 +32,9 @@ public class Preditor extends Animal{
 		return;
 	}
 
-	public int getDaysLeft(int days)
+	public int getDaysLeft()
 	{
-		return days;
+		return daysLeft;
 	}
 	
 	public void setCanBeEatenBy(String typeName)
