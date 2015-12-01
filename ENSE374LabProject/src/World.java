@@ -5,7 +5,7 @@ public class World {
 
 	private static int size = 150;
 	private SquareKm[][] area = new SquareKm[size][size];
-	private int maxNumberOfType = 700;
+	private int maxNumberOfType = 2000;
 	
 	public World()
 	{
@@ -18,10 +18,10 @@ public class World {
 		}
 	}
 	
-	public void runSim(int days)
+	public void runSim()
 	{
-		userPopulate();
-		//printAnimals();
+		int days = promptUser();
+		
 		for(int i = 0; i < days; i++)
 		{
 			System.out.println("Day number " + (i + 1) + ".");
@@ -29,28 +29,64 @@ public class World {
 		}
 	}
 	
-	public void userPopulate()
+	public int promptUser()
 	{
-		populateForPlant("grass");
-		populateForPlant("Tree/Shrub");
-		populateForPred("caterpillar");
-		populateForPred("grasshopper");
-		populateForPred("deer");
-		populateForPred("bluejay");
-		populateForPred("squirel");
-		populateForPred("mouse");
-		populateForPred("rabbit");
-		populateForSuper("hawk");								
-		populateForSuper("wolf");
-		populateForSuper("fox");
+		Scanner in = new Scanner(System.in);
+		int days = 15;
+		System.out.print("Would you like to run the default simulation or populate the world on your own? Enter '1' for populate and '2' for default: ");
+		int letter = in.nextInt();
+		in.nextLine();
+		if(letter == 1)
+		{
+			days = promptDays();
+			userPopulate(true);
+		}
+		else if(letter == 2)
+		{
+			userPopulate(false);
+		}
+		else
+		{
+			while(letter != 1 || letter != 2)
+			{
+				System.out.print("That is not one of the choices, please enter a new letter. Enter '1' for populate and '2' for default:  ");
+				letter = in.nextInt();
+				in.nextLine();
+			}
+		}
+		return days;
+		
+	}
+	
+	public void userPopulate(boolean prompt)
+	{
+		populateForPlant("grass", prompt);
+		populateForPlant("Tree/Shrub", prompt);
+		populateForPred("caterpillar", prompt);
+		populateForPred("grasshopper", prompt);
+		populateForPred("deer", prompt);
+		populateForPred("bluejay", prompt);
+		populateForPred("squirel", prompt);
+		populateForPred("mouse", prompt);
+		populateForPred("rabbit", prompt);								
+		populateForSuper("wolf", prompt);
+		populateForSuper("fox", prompt);
+		populateForSuper("hawk", prompt);
 
 		return;
 	}
 	
 	public void oneDay()
 	{
+
+		Scanner in = new Scanner(System.in);
+		
 		moveAnimals();
-		//printAnimals();
+		System.out.print("Would you like to print out all of the animals with their locations for this day? Enter '1' for yes and '2' no: ");
+		int number = in.nextInt();
+		in.nextLine();
+		if(number ==1)
+			printAnimals();
 		for(int i = 0; i< size; i++)
 		{
 			for(int j = 0; j < size; j++)
@@ -92,10 +128,18 @@ public class World {
 			return 0;
 	}
 	
-	public void populateForPlant(String animalName)
+	public void populateForPlant(String animalName, boolean prompt)
 	{
 		int maxMoves = maxMovesAnimal(animalName);
-		int numberOf = promptUser(animalName);
+		int numberOf = 0;
+		if(prompt)
+		{
+			numberOf = promptUser(animalName);
+		}
+		else
+		{
+			numberOf = 1000;
+		}	
 		for(int i = 0; i < numberOf; i++)
 		{
 			int xCoordinate = randomGenerator(size);
@@ -105,10 +149,18 @@ public class World {
 		return;
 	}
 	
-	public void populateForPred(String animalName)
+	public void populateForPred(String animalName, boolean prompt)
 	{
 		int maxMoves = maxMovesAnimal(animalName);
-		int numberOf = promptUser(animalName);
+		int numberOf = 0;
+		if(prompt)
+		{
+			numberOf = promptUser(animalName);
+		}
+		else
+		{
+			numberOf = 1000;
+		}	
 		for(int i = 0; i < numberOf; i++)
 		{
 			int xCoordinate = randomGenerator(size);
@@ -118,10 +170,18 @@ public class World {
 		return;
 	}
 	
-	public void populateForSuper(String animalName)
+	public void populateForSuper(String animalName, boolean prompt)
 	{
 		int maxMoves = maxMovesAnimal(animalName);
-		int numberOf = promptUser(animalName);
+		int numberOf = 0;
+		if(prompt)
+		{
+			numberOf = promptUser(animalName);
+		}
+		else
+		{
+			numberOf = 1000;
+		}	
 		for(int i = 0; i < numberOf; i++)
 		{
 			int xCoordinate = randomGenerator(size);
@@ -161,6 +221,24 @@ public class World {
 		}
 		return number;
 		//return 500;
+	}
+	
+	public int promptDays()
+	{
+		Scanner in = new Scanner(System.in);
+		System.out.print("How many days would you like to simulate? ");
+		int number = in.nextInt();
+		in.nextLine();
+		if(number > 100)
+		{
+			while(number >  100)
+			{
+			System.out.print("That is more than the maximum number of days allowed, The maximum is 100, please enter a new number: ");
+			number = in.nextInt();
+			in.nextLine();
+			}
+		}
+	return number;
 	}
 	
 	public int randomGenerator(int max)

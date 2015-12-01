@@ -186,7 +186,7 @@ public class SquareKm {
 			{
 				if(((Preditor)temp).getDaysLeft() < 1)
 				{
-					//System.out.println("At " + xCoor + ", " + yCoor + " a " + getAnimalType(i) + " died. ");
+					System.out.println("At " + xCoor + ", " + yCoor + " a " + getAnimalType(i) + " died. ");
 					deleteAnimal(i);
 					i--;
 				}
@@ -195,7 +195,7 @@ public class SquareKm {
 			{
 				if(((Superpreditor)temp).getDaysLeft() < 1)
 				{
-					//System.out.println("At " + xCoor + ", " + yCoor + " a " + getAnimalType(i) + " died. ");
+					System.out.println("At " + xCoor + ", " + yCoor + " a " + getAnimalType(i) + " died. ");
 					deleteAnimal(i);
 					i--;
 				}
