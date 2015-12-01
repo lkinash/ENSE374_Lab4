@@ -166,18 +166,18 @@ public class Animal {
 		{
 			xLoc = 0;
 		}
-		else if(xLoc > 150)
+		else if(xLoc >= 150)
 		{
-			xLoc = 150;
+			xLoc = 149;
 		}
 		
 		if(yLoc < 0)
 		{
 			yLoc = 0;
 		}
-		else if(yLoc > 150)
+		else if(yLoc >= 150)
 		{
-			yLoc = 150;
+			yLoc = 149;
 		}
 		return; 
 	}

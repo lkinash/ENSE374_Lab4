@@ -18,6 +18,18 @@ public class World {
 		}
 	}
 	
+	public void runSim(int days)
+	{
+		userPopulate();
+		printAnimals();
+		for(int i = 0; i < days; i++)
+		{
+			System.out.println("Day number " + (i + 1) + ".");
+			moveAnimals();
+			printAnimals();
+		}
+	}
+	
 	public void userPopulate()
 	{
 		populateForPlant("grass");
@@ -130,7 +142,7 @@ public class World {
 			}
 		}*/
 		//return number;
-		return 15;
+		return 20;
 	}
 	
 	public int randomGenerator(int max)
@@ -152,11 +164,12 @@ public class World {
 				populated = area[i][j].numberAnimals();
 				for(int k = 0; k < populated ; k++)
 				{
-					System.out.println("Populated: " + populated);
+					//System.out.println("Populated: " + populated);
 					XandY = area[i][j].checkMove(k);
+					//System.out.println("XandY: " + XandY);
 					if(XandY != -1)
 					{
-						System.out.println(k);
+						//System.out.println(k);
 						x = XandY/1000;
 						y = XandY - (x * 1000);
 						
@@ -187,8 +200,8 @@ public class World {
 						k--;
 						
 					}
-					
 				}
+				area[i][j].clearAnimalMove();
 			}
 		}
 		

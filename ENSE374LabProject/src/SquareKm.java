@@ -79,7 +79,7 @@ public class SquareKm {
 	public void printAnimals(int x, int y)
 	{
 		for (Animal temp : animalList) {
-			System.out.println( x + ",  "+ y + "  contains: " + temp.getType() + ". ");
+			System.out.println( x + ",  "+ y + "  " + temp.getType() + ". ");
 		}
 		return;
 	}
@@ -95,6 +95,15 @@ public class SquareKm {
 			temp.newLocation();
 		}
 	}
+	
+	public void clearAnimalMove()
+	{
+		for (Animal temp : animalList) {
+			temp.setMoves(0);
+			temp.setMovesDir(0);
+		}
+	}
+	
 	
 	public int checkMove(int i)
 	{
@@ -147,17 +156,18 @@ public class SquareKm {
 		while (i > 0)
 		{
 	        temp1 = animalList.get(i - 1);
-	        if(temp1.getIsType(temp1.getType()) == "plant")
+	        String kind = getAnimalKind(i-1);
+	        if(kind == "plant")
 	        {
 	        	Plant tempPlant1;
 	        	
 	        }
-	        else if(temp1.getIsType(temp1.getType()) == "pred")
+	        else if(kind == "pred")
 	        {
 	        	Preditor tempPred1;
 	        	
 	        }
-	        if(temp1.getIsType(temp1.getType()) == "super")
+	        else if(kind == "super")
 	        {
 	        	Superpreditor tempSuper1;
 	        	

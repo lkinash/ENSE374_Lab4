@@ -5,10 +5,7 @@ public class User {
 	public static void main(String [] args)
 	{
 		World world = new World();
-		world.userPopulate();
-		world.printAnimals();
-		world.moveAnimals();
-		world.printAnimals();
+		world.runSim(10);
 	}
 	
 	
