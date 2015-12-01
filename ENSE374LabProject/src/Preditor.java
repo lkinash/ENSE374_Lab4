@@ -29,11 +29,13 @@ public class Preditor extends Animal{
 	public void setDaysLeft(int days)
 	{
 		daysLeft = days;
+		System.out.println("Days left set as: " + daysLeft);
 		return;
 	}
 
 	public int getDaysLeft()
 	{
+		System.out.println("Days left: " + daysLeft);
 		return daysLeft;
 	}
 	
@@ -78,7 +80,6 @@ public class Preditor extends Animal{
 	
 	public boolean getCanBeEatenBy(String typeName)
 	{
-		boolean canBeEaten = false;
 		int animalId = 10;
 	
 		if(typeName == "caterpillar")

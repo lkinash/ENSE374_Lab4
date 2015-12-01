@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class Superpreditor extends Animal{
 
 	private int daysLeft;
@@ -15,18 +13,20 @@ public class Superpreditor extends Animal{
 	public Superpreditor(String name, int maxMoves, int x, int y, int days)
 	{
 		super(name, maxMoves, x, y);
-		int daysLeft = days;
+		setDaysLeft(days);
 		eatsToday = false;
 	}
 	
 	public void setDaysLeft(int days)
 	{
 		daysLeft = days;
+		System.out.println("Days left set as: " + daysLeft);
 		return;
 	}
 
-	public int getDaysLeft(int daysLeft)
+	public int getDaysLeft()
 	{
+		System.out.println("Days left: " + daysLeft);
 		return daysLeft;
 	}
 	

@@ -34,11 +34,11 @@ public class SquareKm {
 		return yCoor;
 	}
 	
-	public void addAnimalSuper(String animalName, int maxMoves, int xCoordinate, int yCoordinate)
+	/*public void addAnimalSuper(String animalName, int maxMoves, int xCoordinate, int yCoordinate)
 	{
 		animalList.add(new Superpreditor(animalName, maxMoves, xCoordinate, yCoordinate));
 		return;
-	}
+	}*/
 	
 	public void addAnimalSuper(String animalName, int maxMoves, int xCoordinate, int yCoordinate, int days)
 	{
@@ -46,11 +46,11 @@ public class SquareKm {
 		return;
 	}
 	
-	public void addAnimalPred(String animalName, int maxMoves, int xCoordinate, int yCoordinate)
+	/*public void addAnimalPred(String animalName, int maxMoves, int xCoordinate, int yCoordinate)
 	{
 		animalList.add(new Preditor(animalName, maxMoves, xCoordinate, yCoordinate));
 		return;
-	}
+	}*/
 	
 	public void addAnimalPred(String animalName, int maxMoves, int xCoordinate, int yCoordinate, int days)
 	{
@@ -58,11 +58,11 @@ public class SquareKm {
 		return;
 	}
 	
-	public void addAnimalPlant(String animalName, int maxMoves, int xCoordinate, int yCoordinate)
+	/*public void addAnimalPlant(String animalName, int maxMoves, int xCoordinate, int yCoordinate)
 	{
 		animalList.add(new Plant(animalName, maxMoves, xCoordinate, yCoordinate));
 		return;
-	}
+	}*/
 	
 	public void addAnimalPlant(String animalName, int maxMoves, int xCoordinate, int yCoordinate, int days)
 	{
@@ -104,6 +104,18 @@ public class SquareKm {
 		}
 	}
 	
+	public void noFoodDay()
+	{
+		for (Animal temp : animalList) {
+			if(temp instanceof Preditor) 
+				{
+					((Preditor)temp).setDaysLeft((((Preditor)temp).getDaysLeft() - 1));
+					System.out.println((((Preditor)temp).getDaysLeft() ));
+				}
+			else if (temp instanceof Superpreditor)
+				((Superpreditor)temp).setDaysLeft((((Superpreditor)temp).getDaysLeft() - 1));
+		}
+	}
 	
 	public int checkMove(int i)
 	{
@@ -139,47 +151,97 @@ public class SquareKm {
 	
 	public int getAnimalDaysLeft(int index)
 	{
-		Animal temp =  animalList.get(index); 
-		if(temp instanceof Preditor) 
-			return ((Preditor)temp).getDaysLeft();
+		if(animalList.get(index) instanceof Preditor) 
+			return ((Preditor)animalList.get(index)).getDaysLeft();
+		
+		else if (animalList.get(index) instanceof Superpreditor)
+			return ((Superpreditor)animalList.get(index)).getDaysLeft();
+		
 		else
 			return 0;
+	}
+	
+	public void setAnimalDaysLeft(int index, int days)
+	{
+		Animal temp =  animalList.get(index); 
+		if(temp instanceof Preditor) 
+			((Preditor)temp).setDaysLeft(days);
+		else if (temp instanceof Superpreditor)
+			((Superpreditor)temp).setDaysLeft(days);
+
+		return ;
+	}
+	
+	public void checkDies()
+	{
+		for(int i = 0; i < animalList.size(); i++)
+		{
+			Animal temp =  animalList.get(i); 
+			if(temp instanceof Preditor) 
+			{
+				if(((Preditor)temp).getDaysLeft() < 1)
+				{
+					System.out.println("At " + xCoor + ", " + yCoor + " a " + getAnimalType(i) + " died. ");
+					deleteAnimal(i);
+					i--;
+				}
+			}
+			else if (temp instanceof Superpreditor)
+			{
+				if(((Superpreditor)temp).getDaysLeft() < 1)
+				{
+					System.out.println("At " + xCoor + ", " + yCoor + " a " + getAnimalType(i) + " died. ");
+					deleteAnimal(i);
+					i--;
+				}
+			}
+		}
 	}
 	
 	public void checkEating()
 	{
 		int num = animalList.size();
-		int i = num;
-		Animal temp1, temp2;
+		boolean getsEaten = false;
 		if(num > 1)
 		{
-		while (i > 0)
-		{
-	        temp1 = animalList.get(i - 1);
-	        String kind = getAnimalKind(i-1);
-	        if(kind == "plant")
-	        {
-	        	Plant tempPlant1;
-	        	
-	        }
-	        else if(kind == "pred")
-	        {
-	        	Preditor tempPred1;
-	        	
-	        }
-	        else if(kind == "super")
-	        {
-	        	Superpreditor tempSuper1;
-	        	
-	        }
-	        for(int j = i; j > 0; j--)
-	        {
-	        	temp2 = animalList.get(j);
-	        	
-	        }
-	       
-	        
-	    }
+			for(int i = 0; i < num; i++)
+			{	
+				Animal temp =  animalList.get(i);
+				for(int j = i+1; j < num; j++)
+				{
+					Animal temp2 =  animalList.get(j);
+					if(temp instanceof Plant) 
+					{
+						if(temp2 instanceof Preditor)
+						{
+							getsEaten = ((Plant)temp).getCanBeEatenBy(getAnimalType(j));
+							if(getsEaten)
+							{
+								System.out.println("At " + xCoor + ", " + yCoor + " a " + getAnimalType(i) + " was eaten by " + getAnimalType(j) + ". ");
+								deleteAnimal(i);
+								num--;
+								i--;
+								((Preditor)temp2).setDaysLeft(2);
+									}
+						}
+					}
+					else if(temp instanceof Preditor) 
+					{
+						if(temp2 instanceof Superpreditor)
+						{
+							getsEaten = ((Preditor)temp).getCanBeEatenBy(getAnimalType(j));
+							if(getsEaten)
+							{
+								System.out.println("At " + xCoor + ", " + yCoor + " a " + getAnimalType(i) + " was eaten by " + getAnimalType(j) + ". ");
+								deleteAnimal(i);
+								i--;
+								num--;
+								((Superpreditor)temp2).setDaysLeft(2);
+							}
+						}
+					}
+				}
+			}
 		}
 		return;
 	}

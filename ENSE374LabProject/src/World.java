@@ -21,12 +21,11 @@ public class World {
 	public void runSim(int days)
 	{
 		userPopulate();
-		printAnimals();
+	//	printAnimals();
 		for(int i = 0; i < days; i++)
 		{
 			System.out.println("Day number " + (i + 1) + ".");
-			moveAnimals();
-			printAnimals();
+			oneDay();
 		}
 	}
 	
@@ -45,6 +44,25 @@ public class World {
 		populateForSuper("wolf");
 		populateForSuper("fox");
 
+		return;
+	}
+	
+	public void oneDay()
+	{
+		moveAnimals();
+		//printAnimals();
+		for(int i = 0; i< size; i++)
+		{
+			for(int j = 0; j < size; j++)
+			{
+				area[i][j].noFoodDay();
+				area[i][j].checkEating();
+				area[i][j].checkDies();
+			}
+		}
+		System.out.println(countAnimals());
+		
+		
 		return;
 	}
 	
@@ -82,7 +100,7 @@ public class World {
 		{
 			int xCoordinate = randomGenerator(size);
 			int yCoordinate = randomGenerator(size);
-			area[xCoordinate][yCoordinate].addAnimalPlant(animalName, maxMoves, xCoordinate, yCoordinate);
+			area[xCoordinate][yCoordinate].addAnimalPlant(animalName, maxMoves, xCoordinate, yCoordinate, 2);
 		}
 		return;
 	}
@@ -95,7 +113,7 @@ public class World {
 		{
 			int xCoordinate = randomGenerator(size);
 			int yCoordinate = randomGenerator(size);
-			area[xCoordinate][yCoordinate].addAnimalPred(animalName, maxMoves, xCoordinate, yCoordinate);
+			area[xCoordinate][yCoordinate].addAnimalPred(animalName, maxMoves, xCoordinate, yCoordinate, 2);
 		}
 		return;
 	}
@@ -108,7 +126,7 @@ public class World {
 		{
 			int xCoordinate = randomGenerator(size);
 			int yCoordinate = randomGenerator(size);
-			area[xCoordinate][yCoordinate].addAnimalSuper(animalName, maxMoves, xCoordinate, yCoordinate);
+			area[xCoordinate][yCoordinate].addAnimalSuper(animalName, maxMoves, xCoordinate, yCoordinate, 2);
 		}
 		return;
 	}
@@ -142,7 +160,7 @@ public class World {
 			}
 		}*/
 		//return number;
-		return 20;
+		return 40;
 	}
 	
 	public int randomGenerator(int max)
@@ -152,6 +170,19 @@ public class World {
 		return number;
 	}
 
+	public int countAnimals()
+	{
+		int count = 0;
+		for(int i = 0; i< size; i++)
+		{
+			for(int j = 0; j < size; j++)
+			{
+				count += area[i][j].numberAnimals();
+			}
+		}
+		return count;
+	}
+	
 	public void moveAnimals()
 	{
 		int populated, x, y, XandY, tempDays, maxMoves;
@@ -184,11 +215,13 @@ public class World {
 						else if(tempKind == "pred")
 						{
 							tempDays = area[i][j].getAnimalDaysLeft(k);
+							System.out.println("k is: " + k + "tempdays " + tempDays);
 							area[x][y].addAnimalPred(tempType, maxMoves, x, y, tempDays);
 						}
 						else if(tempKind == "super")
 						{
 							tempDays = area[i][j].getAnimalDaysLeft(k);
+							//System.out.println("tempdays" + tempDays);
 							area[x][y].addAnimalSuper(tempType, maxMoves, x, y, tempDays);
 						}
 						

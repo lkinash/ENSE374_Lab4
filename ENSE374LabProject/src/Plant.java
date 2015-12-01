@@ -51,7 +51,6 @@ public class Plant extends Animal{
 	
 	public boolean getCanBeEatenBy(String typeName)		//this function is passed an animal type and passes back if that animal can eat this plant or not
 	{	
-		boolean canBeEaten = false;
 		int animalId = 10;
 		
 		if(typeName == "caterpillar")
