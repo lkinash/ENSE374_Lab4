@@ -33,6 +33,7 @@ public class SquareKm {
 	{
 		return yCoor;
 	}
+	
 	public void addAnimalSuper(String animalName, int maxMoves, int xCoordinate, int yCoordinate, int days)
 	{
 		animalList.add(new Superpreditor(animalName, maxMoves, xCoordinate, yCoordinate, days));
@@ -60,7 +61,16 @@ public class SquareKm {
 	public void printAnimals(int x, int y)
 	{
 		for (Animal temp : animalList) {
-			System.out.println( x + ",  "+ y + "  " + temp.getType() + ". ");
+			if(temp instanceof Preditor) 
+			{
+				System.out.println( x + ",  "+ y + "  " + temp.getType() + " ." + ((Preditor)temp).getDaysLeft() );
+			}
+			else if (temp instanceof Superpreditor)
+			{
+				System.out.println( x + ",  "+ y + "  " + temp.getType() + " ." + ((Superpreditor)temp).getDaysLeft() );
+			}
+			else
+				System.out.println( x + ",  "+ y + "  " + temp.getType() + " ." );
 		}
 		return;
 	}
@@ -102,14 +112,11 @@ public class SquareKm {
 		for (Animal temp : animalList) {
 			if(temp instanceof Preditor) 
 				{
-					System.out.println((((Preditor)temp).getDaysLeft() ));
 					((Preditor)temp).setDaysLeft((((Preditor)temp).getDaysLeft() - 1));
-					System.out.println((((Preditor)temp).getDaysLeft() ));
 				}
 			else if (temp instanceof Superpreditor)
 				{
 					((Superpreditor)temp).setDaysLeft((((Superpreditor)temp).getDaysLeft() - 1));
-					System.out.println((((Superpreditor)temp).getDaysLeft() ));
 				}
 		}
 		return;
@@ -179,7 +186,7 @@ public class SquareKm {
 			{
 				if(((Preditor)temp).getDaysLeft() < 1)
 				{
-					System.out.println("At " + xCoor + ", " + yCoor + " a " + getAnimalType(i) + " died. ");
+					//System.out.println("At " + xCoor + ", " + yCoor + " a " + getAnimalType(i) + " died. ");
 					deleteAnimal(i);
 					i--;
 				}
@@ -188,7 +195,7 @@ public class SquareKm {
 			{
 				if(((Superpreditor)temp).getDaysLeft() < 1)
 				{
-					System.out.println("At " + xCoor + ", " + yCoor + " a " + getAnimalType(i) + " died. ");
+					//System.out.println("At " + xCoor + ", " + yCoor + " a " + getAnimalType(i) + " died. ");
 					deleteAnimal(i);
 					i--;
 				}
@@ -219,9 +226,9 @@ public class SquareKm {
 								System.out.println("At " + xCoor + ", " + yCoor + " a " + getAnimalType(i) + " was eaten by " + getAnimalType(j) + ". ");
 								deleteAnimal(i);
 								num--;
-								i--;
-								((Preditor)temp2).setDaysLeft(2);
-									}
+								j = num;
+								((Preditor)temp2).setDaysLeft(5);
+							}
 						}
 					}
 					else if(temp instanceof Preditor) 
@@ -233,9 +240,9 @@ public class SquareKm {
 							{
 								System.out.println("At " + xCoor + ", " + yCoor + " a " + getAnimalType(i) + " was eaten by " + getAnimalType(j) + ". ");
 								deleteAnimal(i);
-								i--;
 								num--;
-								((Superpreditor)temp2).setDaysLeft(2);
+								j = num;
+								((Superpreditor)temp2).setDaysLeft(8);
 							}
 						}
 					}

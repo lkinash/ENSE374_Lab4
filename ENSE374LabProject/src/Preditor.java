@@ -10,7 +10,7 @@ public class Preditor extends Animal{
 	public Preditor(String name, int maxMoves, int x, int y, int days)
 	{
 		super(name, maxMoves, x, y);
-		int daysLeft = days;
+		setDaysLeft(days);
 		eatenToday = false;
 		eatsToday = false;
 		setCanBeEatenBy(name);
@@ -19,13 +19,11 @@ public class Preditor extends Animal{
 	public void setDaysLeft(int days)
 	{
 		daysLeft = days;
-		//System.out.println("Days left set as: " + daysLeft);
 		return;
 	}
 
 	public int getDaysLeft()
 	{
-		//System.out.println("Days left: " + daysLeft);
 		return daysLeft;
 	}
 	

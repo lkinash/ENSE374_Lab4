@@ -5,7 +5,7 @@ public class World {
 
 	private static int size = 150;
 	private SquareKm[][] area = new SquareKm[size][size];
-	private int maxNumberOfType = 40;
+	private int maxNumberOfType = 700;
 	
 	public World()
 	{
@@ -49,8 +49,8 @@ public class World {
 	
 	public void oneDay()
 	{
-		//moveAnimals();
-		printAnimals();
+		moveAnimals();
+		//printAnimals();
 		for(int i = 0; i< size; i++)
 		{
 			for(int j = 0; j < size; j++)
@@ -113,7 +113,7 @@ public class World {
 		{
 			int xCoordinate = randomGenerator(size);
 			int yCoordinate = randomGenerator(size);
-			area[xCoordinate][yCoordinate].addAnimalPred(animalName, maxMoves, xCoordinate, yCoordinate, 2);
+			area[xCoordinate][yCoordinate].addAnimalPred(animalName, maxMoves, xCoordinate, yCoordinate, 5);
 		}
 		return;
 	}
@@ -126,7 +126,7 @@ public class World {
 		{
 			int xCoordinate = randomGenerator(size);
 			int yCoordinate = randomGenerator(size);
-			area[xCoordinate][yCoordinate].addAnimalSuper(animalName, maxMoves, xCoordinate, yCoordinate, 2);
+			area[xCoordinate][yCoordinate].addAnimalSuper(animalName, maxMoves, xCoordinate, yCoordinate, 8);
 		}
 		return;
 	}
@@ -147,7 +147,7 @@ public class World {
 	public int promptUser(String animalName)
 	{
 		Scanner in = new Scanner(System.in);
-		/*System.out.print("How many " + animalName + " would you like to put in the world? ");
+		System.out.print("How many " + animalName + " would you like to put in the world? ");
 		int number = in.nextInt();
 		in.nextLine();
 		if(number > maxNumberOfType)
@@ -158,9 +158,9 @@ public class World {
 			number = in.nextInt();
 			in.nextLine();
 			}
-		}*/
-		//return number;
-		return 1;
+		}
+		return number;
+		//return 500;
 	}
 	
 	public int randomGenerator(int max)
@@ -220,7 +220,7 @@ public class World {
 						else if(tempKind == "pred")
 						{
 							tempDays = area[i][j].getAnimalDaysLeft(k);
-							System.out.println("k is: " + k + "tempdays " + tempDays);
+							//System.out.println("k is: " + k + "tempdays " + tempDays);
 							area[x][y].addAnimalPred(tempType, maxMoves, x, y, tempDays);
 						}
 						else if(tempKind == "super")
