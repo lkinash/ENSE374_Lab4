@@ -7,16 +7,6 @@ public class Preditor extends Animal{
 	private boolean eatenToday;
 	private boolean eatsToday;
 	
-	
-	public Preditor(String name, int maxMoves, int x, int y)
-	{
-		super(name, maxMoves, x, y);
-		int daysLeft = 2;
-		eatenToday = false;
-		eatsToday = false;
-		setCanBeEatenBy(name);
-	}
-
 	public Preditor(String name, int maxMoves, int x, int y, int days)
 	{
 		super(name, maxMoves, x, y);

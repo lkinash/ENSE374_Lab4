@@ -17,13 +17,6 @@ public class Plant extends Animal{
 	private boolean[] canBeEatenBy  = new boolean[11];
 	private boolean eatenToday;
 	
-	public Plant(String name, int maxMoves, int x, int y)
-	{
-		super(name, maxMoves, x, y);
-		eatenToday = false;
-		setCanBeEatenBy(name);
-	}
-	
 	public Plant(String name, int maxMoves, int x, int y, int days)
 	{
 		super(name, maxMoves, x, y);

@@ -33,36 +33,17 @@ public class SquareKm {
 	{
 		return yCoor;
 	}
-	
-	/*public void addAnimalSuper(String animalName, int maxMoves, int xCoordinate, int yCoordinate)
-	{
-		animalList.add(new Superpreditor(animalName, maxMoves, xCoordinate, yCoordinate));
-		return;
-	}*/
-	
 	public void addAnimalSuper(String animalName, int maxMoves, int xCoordinate, int yCoordinate, int days)
 	{
 		animalList.add(new Superpreditor(animalName, maxMoves, xCoordinate, yCoordinate, days));
 		return;
 	}
-	
-	/*public void addAnimalPred(String animalName, int maxMoves, int xCoordinate, int yCoordinate)
-	{
-		animalList.add(new Preditor(animalName, maxMoves, xCoordinate, yCoordinate));
-		return;
-	}*/
-	
+
 	public void addAnimalPred(String animalName, int maxMoves, int xCoordinate, int yCoordinate, int days)
 	{
 		animalList.add(new Preditor(animalName, maxMoves, xCoordinate, yCoordinate, days));
 		return;
 	}
-	
-	/*public void addAnimalPlant(String animalName, int maxMoves, int xCoordinate, int yCoordinate)
-	{
-		animalList.add(new Plant(animalName, maxMoves, xCoordinate, yCoordinate));
-		return;
-	}*/
 	
 	public void addAnimalPlant(String animalName, int maxMoves, int xCoordinate, int yCoordinate, int days)
 	{
