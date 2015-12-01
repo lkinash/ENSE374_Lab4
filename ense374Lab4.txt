@@ -21,10 +21,10 @@ Animals will either travel zero or somewhere up to the maximum number of grid lo
 Animals will not travel diagonally for simplicity
 Animals will move their entire days worth of grid locations all in one direction
 The number of tiles moved and direction the animal will be moving will be determined by a random number generator that will tell the animal what to do
-The animals will each have a probability of being eaten if some other animal is on the same grid location as they are, this probability will determine if the other animals on the square will eat them or not
+The animals may be eaten by another animal given that there is an animal on the same square as them that can eat them.
 Animals will only eat or be eaten in the grid square on which they end the day, not while moving
 Plants can not run away or defend themselves thus if an animal that eats a plant ends the day on a grid location with a plant on it they get to eat that day
-Everything must eat within two days, a counter of lives for each animal will tell how many days they have left until they die
+Originally it was thought that everything must eat within two days, a counter of lives for each animal will tell how many days they have left until they die however too many animals were dying off too quickly for this to work, thus it was changed to the animals that are predators have 5 days to eat something and animals that are super predators like the hawk, fox, and wolf will have eight days.
 If the animal dies or is eaten they will be eliminated from the simulation
 No reproducing of any kind. Everything will die.
 Print out only what is living at each location at the end of the day including number of each animal that is present
