@@ -34,33 +34,46 @@ public class Preditor extends Animal{
 		
 		if(typeName == "caterpillar")					//if it is a caterpillar
 		{
-			Arrays.fill(canBeEatenBy, 3 , 3 ,Boolean.TRUE);			//bluejay
+			//Arrays.fill(canBeEatenBy, 3 , 3 ,Boolean.TRUE);			//bluejay
+			canBeEatenBy[3] = true;
 		}
 		else if(typeName == "grasshopper")					//if it is a grasshopper
 		{
-			Arrays.fill(canBeEatenBy, 3 , 3 ,Boolean.TRUE); 		//bluejay
+			//Arrays.fill(canBeEatenBy, 3 , 3 ,Boolean.TRUE); 		//bluejay
+			canBeEatenBy[3] = true;
 		}
 		else if(typeName == "deer")					//if it is a deer
 		{
-			Arrays.fill(canBeEatenBy, 8 , 8 ,Boolean.TRUE);			//wolf
+			//Arrays.fill(canBeEatenBy, 8 , 8 ,Boolean.TRUE);			//wolf
+			canBeEatenBy[8] = true;
 		}
 		else if(typeName == "bluejay")					//if it is a bluejay
 		{
-			Arrays.fill(canBeEatenBy, 9 , 9 ,Boolean.TRUE);					//fox
+			//Arrays.fill(canBeEatenBy, 9 , 9 ,Boolean.TRUE);					//fox
+			canBeEatenBy[9] = true;
 		}
 		else if(typeName == "squirel")					//if it is a squirel
 		{
-			Arrays.fill(canBeEatenBy, 7 , 7 ,Boolean.TRUE);						//hawk
-			Arrays.fill(canBeEatenBy, 9 , 9 ,Boolean.TRUE);					//fox
+			//Arrays.fill(canBeEatenBy, 7 , 7 ,Boolean.TRUE);						//hawk
+			//Arrays.fill(canBeEatenBy, 9 , 9 ,Boolean.TRUE);					//fox
+			
+			canBeEatenBy[7] = true;
+			canBeEatenBy[9] = true;
+			
 		}
 		else if(typeName == "mouse")					//if it is a mouse
 		{
-			Arrays.fill(canBeEatenBy, 7 , 7 ,Boolean.TRUE);						//hawk
-			Arrays.fill(canBeEatenBy, 9 , 9 ,Boolean.TRUE);						//fox
+			//Arrays.fill(canBeEatenBy, 7 , 7 ,Boolean.TRUE);						//hawk
+			//Arrays.fill(canBeEatenBy, 9 , 9 ,Boolean.TRUE);						//fox
+			canBeEatenBy[7] = true;
+			canBeEatenBy[9] = true;
 		}
 		else if(typeName == "rabbit")					//if it is a rabbit
 		{
-			Arrays.fill(canBeEatenBy, 7 , 8 ,Boolean.TRUE);						//fox and wolf
+			//Arrays.fill(canBeEatenBy, 7 , 7 ,Boolean.TRUE);						//fox and wolf
+			//Arrays.fill(canBeEatenBy, 8 , 8 ,Boolean.TRUE);	
+			canBeEatenBy[7] = true;
+			canBeEatenBy[8] = true;
 		}
 		
 		return;

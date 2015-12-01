@@ -20,12 +20,21 @@ public class World {
 	
 	public void runSim()
 	{
-		int days = promptUser();
+		Scanner in = new Scanner(System.in);
+		int yes = 1;
+			while(yes == 1)
+			{
+			int days = promptUser();
 		
-		for(int i = 0; i < days; i++)
-		{
+			for(int i = 0; i < days; i++)
+			{
 			System.out.println("Day number " + (i + 1) + ".");
-			oneDay();
+				oneDay();
+			}
+			
+			System.out.print("Would you like to run the default simulation again? Enter '1' for yes and '2' for no: ");
+			yes = in.nextInt();
+			in.nextLine();
 		}
 	}
 	

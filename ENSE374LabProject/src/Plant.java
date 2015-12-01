@@ -30,13 +30,28 @@ public class Plant extends Animal{
 		
 		if(typeName == "grass")						//if it is a grass
 		{
-			Arrays.fill(canBeEatenBy, 1 , 2 ,Boolean.TRUE);					//then grasshopper, and deer
-			Arrays.fill(canBeEatenBy, 5 , 6 ,Boolean.TRUE);					//and mouse and rabbit
+			//Arrays.fill(canBeEatenBy, 1 , 1 ,Boolean.TRUE);					//then grasshopper, and deer
+			//Arrays.fill(canBeEatenBy, 2 , 2 ,Boolean.TRUE);	
+			//Arrays.fill(canBeEatenBy, 5 , 5,Boolean.TRUE);					//and mouse and rabbit
+			//Arrays.fill(canBeEatenBy, 6 , 6 ,Boolean.TRUE);	
+			
+			canBeEatenBy[1] = true;
+			canBeEatenBy[2] = true;
+			canBeEatenBy[5] = true;
+			canBeEatenBy[6] = true;
+			
 		}																	//these are set to true since these are the animals that can eat grass
 		else																//else if here because if it is not grass it is trees and shrubs 
 		{
-			Arrays.fill(canBeEatenBy, 0 , 0 ,Boolean.TRUE);		//then caterpillar
-			Arrays.fill(canBeEatenBy, 3, 5 ,Boolean.TRUE);		//and bluejay, squirel, and mouse are set true since they can eat the trees and shrubs
+			//Arrays.fill(canBeEatenBy, 0 , 0 ,Boolean.TRUE);		//then caterpillar
+			//Arrays.fill(canBeEatenBy, 3 , 3 ,Boolean.TRUE);		//and bluejay, squirel, and mouse are set true since they can eat the trees and shrubs
+			//Arrays.fill(canBeEatenBy, 4 , 4 ,Boolean.TRUE);	
+			//Arrays.fill(canBeEatenBy, 5 , 5 ,Boolean.TRUE);	
+			
+			canBeEatenBy[0] = true;
+			canBeEatenBy[3] = true;
+			canBeEatenBy[4] = true;
+			canBeEatenBy[5] = true;
 		}	
 		
 		return;
