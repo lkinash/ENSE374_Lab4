@@ -19,13 +19,13 @@ public class Preditor extends Animal{
 	public void setDaysLeft(int days)
 	{
 		daysLeft = days;
-		System.out.println("Days left set as: " + daysLeft);
+		//System.out.println("Days left set as: " + daysLeft);
 		return;
 	}
 
 	public int getDaysLeft()
 	{
-		System.out.println("Days left: " + daysLeft);
+		//System.out.println("Days left: " + daysLeft);
 		return daysLeft;
 	}
 	

@@ -70,6 +70,18 @@ public class SquareKm {
 		 return animalList.size();
 	}
 	
+	public int numberPlants()
+	{
+		int count = 0;
+		for (Animal temp : animalList) {
+			if(temp instanceof Plant) 
+				{
+					count++;
+				}
+			}	
+		return count;
+	}
+	
 	public void animalMove()
 	{
 		for (Animal temp : animalList) {
@@ -90,12 +102,17 @@ public class SquareKm {
 		for (Animal temp : animalList) {
 			if(temp instanceof Preditor) 
 				{
+					System.out.println((((Preditor)temp).getDaysLeft() ));
 					((Preditor)temp).setDaysLeft((((Preditor)temp).getDaysLeft() - 1));
 					System.out.println((((Preditor)temp).getDaysLeft() ));
 				}
 			else if (temp instanceof Superpreditor)
-				((Superpreditor)temp).setDaysLeft((((Superpreditor)temp).getDaysLeft() - 1));
+				{
+					((Superpreditor)temp).setDaysLeft((((Superpreditor)temp).getDaysLeft() - 1));
+					System.out.println((((Superpreditor)temp).getDaysLeft() ));
+				}
 		}
+		return;
 	}
 	
 	public int checkMove(int i)
@@ -177,6 +194,7 @@ public class SquareKm {
 				}
 			}
 		}
+		return;
 	}
 	
 	public void checkEating()

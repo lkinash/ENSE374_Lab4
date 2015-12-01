@@ -21,7 +21,7 @@ public class World {
 	public void runSim(int days)
 	{
 		userPopulate();
-	//	printAnimals();
+		//printAnimals();
 		for(int i = 0; i < days; i++)
 		{
 			System.out.println("Day number " + (i + 1) + ".");
@@ -49,8 +49,8 @@ public class World {
 	
 	public void oneDay()
 	{
-		moveAnimals();
-		//printAnimals();
+		//moveAnimals();
+		printAnimals();
 		for(int i = 0; i< size; i++)
 		{
 			for(int j = 0; j < size; j++)
@@ -60,8 +60,8 @@ public class World {
 				area[i][j].checkDies();
 			}
 		}
-		System.out.println(countAnimals());
-		
+
+		countAnimals();
 		
 		return;
 	}
@@ -160,7 +160,7 @@ public class World {
 			}
 		}*/
 		//return number;
-		return 40;
+		return 1;
 	}
 	
 	public int randomGenerator(int max)
@@ -170,17 +170,22 @@ public class World {
 		return number;
 	}
 
-	public int countAnimals()
+	public void countAnimals()
 	{
 		int count = 0;
+		int plants = 0;
 		for(int i = 0; i< size; i++)
 		{
 			for(int j = 0; j < size; j++)
 			{
 				count += area[i][j].numberAnimals();
+				plants += area[i][j].numberPlants();
 			}
 		}
-		return count;
+		System.out.println("Animal count: " + (count-plants));
+		System.out.println("Plant count: " + plants);
+		
+		return;
 	}
 	
 	public void moveAnimals()
